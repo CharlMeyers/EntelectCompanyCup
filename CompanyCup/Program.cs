@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompanyCup.models;
+using Practice;
 
 namespace CompanyCup
 {
@@ -6,7 +7,12 @@ namespace CompanyCup
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var lines = FileHelper.Read("1.txt");
+
+            // 1. Create the world
+            var worldDetails = lines[0];
+            var world = new World(worldDetails);
+
         }
     }
 }
