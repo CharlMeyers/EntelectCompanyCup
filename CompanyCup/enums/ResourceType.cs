@@ -1,6 +1,6 @@
 ﻿namespace CompanyCup.enums
 {
-    public enum Resource
+    public enum ResourceType
     {
         Adamantium = 1,
         Madamantium = 2,

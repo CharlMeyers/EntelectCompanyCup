@@ -1,4 +1,7 @@
-﻿namespace CompanyCup.models
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace CompanyCup.models
 {
     public class World
     {
@@ -11,19 +14,24 @@
             // 2. Get number of unique resources
             NumUniqueResources = int.Parse(environmentString[1]);
 
-            // 3. Get number of ships
-            NumShips = int.Parse(environmentString[2]);
+            // 3. Sort out the ships
+            var numShips = int.Parse(environmentString[2]);
+            var shipCapacity = int.Parse(environmentString[3]);
 
-            // 4. Get ship capacity
-            ShipCapacity = int.Parse(environmentString[3]);
+            Ships = new List<Ship>();
 
-            // 5. Get number of labs
+            for (var i = 0; i < numShips; i++)
+            {
+                Ships.Add(new Ship(shipCapacity));
+            }
+
+            // 4. Get number of labs
             NumLabs = int.Parse(environmentString[4]);
 
-            // 6. Get outpost processed material threshold
+            // 5. Get outpost processed material threshold
             OutputProcessedMaterialThreshold = int.Parse(environmentString[5]);
 
-            // 7. Get number of quotas
+            // 6. Get number of quotas
             NumQuotas = int.Parse(environmentString[6]);
         }
 
@@ -31,14 +39,14 @@
 
         public int NumUniqueResources { get; set; }
 
-        public int NumShips { get; set; }
-
-        public int ShipCapacity { get; set; }
+        public List<Ship> Ships { get; set; }
 
         public int NumLabs { get; set; }
 
         public int OutputProcessedMaterialThreshold { get; set; }
 
         public int NumQuotas { get; set; }
+
+        public List<Cluster> Clusters { get; set; }
     }
 }
