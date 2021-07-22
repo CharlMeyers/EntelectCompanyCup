@@ -1,6 +1,7 @@
 ﻿using CompanyCup.enums;
 using CompanyCup.models;
 using Practice;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,7 +11,7 @@ namespace CompanyCup
     {
         static void Main(string[] args)
         {
-            var gridNum = "4";
+            var gridNum = "1";
             var lines = FileHelper.Read($"{gridNum}.txt");
 
             // 1. Create the world
@@ -27,10 +28,15 @@ namespace CompanyCup
                 clusterSubDetails.Skip(1).ToList().ForEach(csd => { clusters.Add(new Cluster(resourceType, csd)); });
             }
 
+            Console.WriteLine($"Run started at {DateTime.Now.TimeOfDay}");
+
             world.Clusters = clusters;
             world.Run();
 
             world.Print($"{gridNum}-1.txt");
+
+            Console.WriteLine($"Run stopped at {DateTime.Now.TimeOfDay}");
+            Console.ReadKey();
         }
     }
 }

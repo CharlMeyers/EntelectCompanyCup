@@ -52,9 +52,10 @@ namespace CompanyCup.models
 
         public void Run()
         {
+            Console.WriteLine($"Ships to run {Ships.Count}");
             foreach (var s in Ships)
             {
-                Console.WriteLine("Running Ship %d", Ships.IndexOf(s));
+                Console.WriteLine($"Running Ship {Ships.IndexOf(s)}");
                 s.Run(Clusters);
             }
         }

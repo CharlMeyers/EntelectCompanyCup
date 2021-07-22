@@ -1,5 +1,4 @@
-﻿using CompanyCup.helpers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace CompanyCup.models
 {
@@ -27,10 +26,10 @@ namespace CompanyCup.models
             {
                 if (c.NumResources > 0)
                 {
-                    var distance = distanceCalculator.calculateDistance(this.Coordinates, c.Coordinates);
-                    if (!priorityList.ContainsKey(distance))
+                    //var distance = distanceCalculator.calculateDistance(this.Coordinates, c.Coordinates);
+                    if (!priorityList.ContainsKey(c.NumResources))
                     {
-                        priorityList.Add(distance, c);
+                        priorityList.Add(c.NumResources, c);
                     }
                 }
             }
@@ -43,6 +42,11 @@ namespace CompanyCup.models
 
         public override string ToString()
         {
+            if (VisitedClusters.Count == 0)
+            {
+                return "";
+            }
+
             var ships = string.Join(",", VisitedClusters);
             ships += ",0";
 
@@ -58,6 +62,7 @@ namespace CompanyCup.models
                 this.Coordinates = cluster.Coordinates;
 
                 this.VisitedClusters.Add(cluster);
+                clusters.Remove(cluster);
                 Run(clusters);
             }
 
