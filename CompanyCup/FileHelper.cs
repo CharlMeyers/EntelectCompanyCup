@@ -41,7 +41,7 @@ namespace Practice
 
         public static string FilePath(string file)
         {
-            return $@"{Directory.GetCurrentDirectory()}\Lib\{file}";
+            return $@"{Directory.GetCurrentDirectory()}\grids\{file}";
         }
     }
 }
