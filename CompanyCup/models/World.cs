@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Practice;
+using System;
+using System.Collections.Generic;
 
 namespace CompanyCup.models
 {
@@ -48,5 +49,26 @@ namespace CompanyCup.models
         public int NumQuotas { get; set; }
 
         public List<Cluster> Clusters { get; set; }
+
+        public void Run()
+        {
+            foreach (var s in Ships)
+            {
+                Console.WriteLine("Running Ship %d", Ships.IndexOf(s));
+                s.Run(Clusters);
+            }
+        }
+
+        public void Print(string fileName)
+        {
+            var output = new List<string>();
+
+            foreach (var s in Ships)
+            {
+                output.Add(s.ToString());
+            }
+
+            FileHelper.Write(fileName, output);
+        }
     }
 }

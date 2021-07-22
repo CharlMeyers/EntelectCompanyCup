@@ -22,11 +22,11 @@ namespace Practice
             return lines;
         }
 
-        public static string Write(string file, IEnumerable<string> objectToPrint)
+        public static string Write(string file, List<string> objectToPrint)
         {
             DateTime currentTime = DateTime.Now;
 
-            var outputFilepath = Path.Combine(@"c:\out\", Path.GetFileNameWithoutExtension(FilePath(file)) + $"-output-{currentTime.ToString("HHmmss")}.txt");
+            var outputFilepath = Path.Combine(Path.GetFileNameWithoutExtension(FilePath(file)) + $"-output-{currentTime.ToString("HHmmss")}.txt");
 
             using (StreamWriter fileWriter = new StreamWriter(outputFilepath))
             {

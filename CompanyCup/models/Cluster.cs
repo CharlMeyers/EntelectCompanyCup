@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using CompanyCup.enums;
+﻿using CompanyCup.enums;
+using System.Linq;
 
 namespace CompanyCup.models
 {
@@ -25,5 +25,10 @@ namespace CompanyCup.models
         public ResourceType ResourceType { get; set; }
         public Dimension Coordinates { get; set; }
         public int NumResources { get; set; }
+
+        public override string ToString()
+        {
+            return this.Id;
+        }
     }
 }
